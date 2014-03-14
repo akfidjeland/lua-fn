@@ -1,5 +1,8 @@
 require 'torch'
 require 'fn'
+require 'totem'
+local tester = totem.Tester()
+local tests = {}
 
 
 function tests.test_count()
@@ -68,3 +71,5 @@ end
 
 
 
+tester:add(tests):run()
+os.exit(#tester.errors)

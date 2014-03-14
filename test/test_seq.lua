@@ -1,5 +1,8 @@
 require 'fn'
 require 'fn/seq'
+require 'totem'
+local tester = totem.Tester()
+local tests = {}
 
 
 function tests.test_realizers()
@@ -138,3 +141,5 @@ function tests.group_by()
     tester:assertTableEq(res[false], {1,3,5,7,9}, "group_by false")
 end
 
+tester:add(tests):run()
+os.exit(#tester.errors)
