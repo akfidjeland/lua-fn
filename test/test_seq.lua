@@ -117,8 +117,6 @@ end
 
 function tests.weave()
     local woven = seq.interleave({1,1,1,1}, {2,2,2,2})
-    print("woven: ")
-    print(seq.table(woven))
     tester:assertTableEq(seq.table(woven), {1,2,1,2,1,2,1,2}, "interleave 1's and 2's")
 
     local leaved = seq.interpose(",", {"foo", "bar", "baz"})
