@@ -91,7 +91,7 @@ end
 
 function tests.test_flattening()
     local nested = {1, 2, 3, {4, 5, {6, 7}}}
-    tester:assertTableEq(seq.table(seq.flatten(nested)), {1,2,3,4,3,6}, "flatten a nested sequence")
+    tester:assertTableEq(seq.table(seq.flatten(nested)), {1,2,3,4,5,6,7}, "flatten a nested sequence")
 end
 
 function tests.test_mapping()
