@@ -372,7 +372,7 @@ end
 function seq.interleave(...)
     local args = {...}
     local n = #args
-    args = seq.cycle(seq.map(seq.seq, args))
+    args = seq.cycle(seq.table(seq.map(seq.seq, args)))
 
     return function()
         local s = args()

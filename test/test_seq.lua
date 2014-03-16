@@ -1,5 +1,8 @@
 require 'fn'
 require 'fn/seq'
+require 'totem'
+local tester = totem.Tester()
+local tests = {}
 
 
 function tests.test_realizers()
@@ -88,7 +91,7 @@ end
 
 function tests.test_flattening()
     local nested = {1, 2, 3, {4, 5, {6, 7}}}
-    tester:assertTableEq(seq.table(seq.flatten(nested)), {1,2,3,4,3,6}, "flatten a nested sequence")
+    tester:assertTableEq(seq.table(seq.flatten(nested)), {1,2,3,4,5,6,7}, "flatten a nested sequence")
 end
 
 function tests.test_mapping()
@@ -114,8 +117,6 @@ end
 
 function tests.weave()
     local woven = seq.interleave({1,1,1,1}, {2,2,2,2})
-    print("woven: ")
-    print(seq.table(woven))
     tester:assertTableEq(seq.table(woven), {1,2,1,2,1,2,1,2}, "interleave 1's and 2's")
 
     local leaved = seq.interpose(",", {"foo", "bar", "baz"})
@@ -138,3 +139,5 @@ function tests.group_by()
     tester:assertTableEq(res[false], {1,3,5,7,9}, "group_by false")
 end
 
+tester:add(tests):run()
+os.exit(#tester.errors)
