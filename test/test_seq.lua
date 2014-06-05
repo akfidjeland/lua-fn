@@ -1,5 +1,5 @@
 require 'fn'
-require 'fn/seq'
+require 'fn.seq'
 require 'totem'
 local tester = totem.Tester()
 local tests = {}
