@@ -1,5 +1,5 @@
 require 'torch'
-require 'util/queue'
+require 'util.queue'
 require 'fn'
 
 seq = {}
